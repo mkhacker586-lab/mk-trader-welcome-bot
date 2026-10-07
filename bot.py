@@ -144,7 +144,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     if data == "btn_recovery":
         text = (
-            f"📈 **𝐏𝐄𝐑𝐒𝐎𝐍𝐀Ｌ 𝐋𝐎𝐒𝐒 𝐑𝐄𝐂𝐎𝐕𝐄𝐑𝐘 𝐙𝐎𝐍𝐄** 💯\n\n"
+            f"📈 **𝐏𝐄𝐑𝐒𝐎𝐍𝐀𝐋 𝐋𝐎𝐒𝐒 𝐑𝐄𝐂𝐎𝐕𝐄𝐑𝐘 𝐙𝐎𝐍𝐄** 💯\n\n"
             f"Agar aapka purana loss ho chuka hai, toh pareshan hone ki koi zaroorat nahi hai! Humare VIP recovery sessions join karein.\n\n"
             f"🎯 **Recovery Steps:**\n"
             f"1️⃣ Naya account is link se banayein:\n🔗 https://broker-qx.pro/?lid=1614510\n"
@@ -167,8 +167,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = (
             f"💬 **𝐒𝐄𝐍𝐃 𝐘𝐎𝐔𝐑 𝐕𝐀𝐋𝐔𝐀𝐁𝐋𝐄 𝐅𝐄𝐄𝐃𝐁𝐀𝐂𝐊** ⭐\n\n"
             f"Aapka feedback hamare liye bohot ahem hai! Apne profit ke screenshots, trade results, aur reviews seedha yahan send karein:\n\n"
-            f"👉 **DM Owner for Feedback:** @MK_TRADER586\n\n"
-            f"Behtareen feedback dene wale members ko free Telegram Premium aur special gifts milte hain! 🎁"
+            f"👉 **DM Owner for Feedback:** @MK_TRADER586"
         )
         await query.message.reply_text(text, parse_mode="Markdown")
 
@@ -226,7 +225,6 @@ async def main():
 
     print("𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 Interactive Bot is running successfully...")
     
-    # Safe polling method for Python 3.11 compatibility
     await application.initialize()
     await application.start()
     await application.updater.start_polling(drop_pending_updates=True)
