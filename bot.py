@@ -2,6 +2,7 @@ import os
 import logging
 import asyncio
 import datetime
+import threading
 from aiohttp import web
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -103,7 +104,7 @@ async def send_welcome_post(chat_id, user, context):
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
             f"🎯 𝐒𝐭𝐞𝐩 𝟏: 𝐂𝐫𝐞𝐚𝐭𝐞 𝐑𝐞𝐜𝐨𝐯𝐞𝐫𝐲 𝐀𝐜𝐜𝐨𝐮𝐧𝐭 (𝐐𝐮𝐨𝐭𝐞𝐱)\n"
             f"🔗 https://broker-qx.pro/?lid=1614510\n\n"
-            f"🏦 𝐒𝐭𝐞ፕ 𝟐: 𝐒𝐞𝐧𝐝 𝐓𝐫𝐚𝐝𝐞𝐫 𝐈𝐃 𝐟𝐨𝐫 𝐈𝐧𝐬𝐭𝐚𝐧𝐭 𝐕𝐈𝐏 𝐀𝐜𝐜𝐞𝐬𝐬!\n"
+            f"🏦 𝐒𝐭𝐞𝐩 𝟐: 𝐒𝐞𝐧𝐝 𝐓𝐫𝐚𝐝𝐞𝐫 𝐈𝐃 𝐟𝐨𝐫 𝐈𝐧𝐬𝐭𝐚𝐧𝐭 𝐕𝐈𝐏 𝐀𝐜𝐜𝐞𝐬𝐬!\n"
             f"👉 𝐃𝐌 𝐎𝐰𝐧𝐞𝐫: @MK_TRADER586\n\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
             f"👑 𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 | 𝐕𝐈𝐏 𝐙𝐎𝐍𝐄 ⚡"
@@ -193,20 +194,22 @@ async def broadcast_announcement(update: Update, context: ContextTypes.DEFAULT_T
     except Exception as e:
         print(f"Broadcast error: {e}")
 
-async def handle_web(request):
-    return web.Response(text="M.K Trader Bot is running 24/7!")
-
-async def start_web_server():
+# Web server running in a separate background thread (No event loop conflict!)
+def run_web_server():
+    async def handle_web(request):
+        return web.Response(text="M.K Trader Bot is running 24/7!")
+    
     app = web.Application()
     app.add_routes([web.get('/', handle_web)])
-    runner = web.AppRunner(app)
-    await runner.setup()
     port = int(os.environ.get("PORT", 10000))
-    site = web.TCPSite(runner, '0.0.0.0', port)
-    await site.start()
-    print(f"Web server started on port {port}")
+    web.run_app(app, host='0.0.0.0', port=port, print=None)
 
-async def main():
+def main():
+    # Start web server in background thread
+    server_thread = threading.Thread(target=run_web_server, daemon=True)
+    server_thread.start()
+    print("Web server started in background thread.")
+
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
     application.add_handler(ChatJoinRequestHandler(handle_join_request))
@@ -214,11 +217,8 @@ async def main():
     application.add_handler(CallbackQueryHandler(button_handler))
     application.add_handler(MessageHandler(filters.Chat(chat_id=ANNOUNCEMENT_CHANNEL_ID) & ~filters.COMMAND, broadcast_announcement))
 
-    # Start web server for Render port check
-    await start_web_server()
-
     print("𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 Bot is starting polling...")
-    await application.run_polling(drop_pending_updates=True)
+    application.run_polling(drop_pending_updates=True)
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    main()
