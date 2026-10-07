@@ -23,7 +23,7 @@ logging.basicConfig(
 # ==========================================
 # ⚙ AAPKI SETTINGS & IDs:
 # ==========================================
-TELEGRAM_BOT_TOKEN = "8684962736:AAHQKkY174TL5DZCB1nBLwX2OHm8U0ck9M4"
+TELEGRAM_BOT_TOKEN = "8684962736:AAGyFQOjw2RLq7FvZbBJVSGMpTHu2GURHdE"
 BOT_NAME = "𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐁𝐎𝐓"
 LOG_CHANNEL_ID = -1003724080321  
 ANNOUNCEMENT_CHANNEL_ID = -1003931319011  
