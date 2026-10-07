@@ -2,7 +2,6 @@ import os
 import logging
 import asyncio
 import datetime
-from aiohttp import web
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, 
@@ -193,20 +192,7 @@ async def broadcast_announcement(update: Update, context: ContextTypes.DEFAULT_T
     except Exception as e:
         print(f"Broadcast error: {e}")
 
-async def handle_web(request):
-    return web.Response(text="M.K Trader Bot is running!")
-
-async def start_web_server():
-    app = web.Application()
-    app.add_routes([web.get('/', handle_web)])
-    runner = web.AppRunner(app)
-    await runner.setup()
-    port = int(os.environ.get("PORT", 10000))
-    site = web.TCPSite(runner, '0.0.0.0', port)
-    await site.start()
-    print(f"Web server started on port {port}")
-
-async def main():
+def main():
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
     application.add_handler(ChatJoinRequestHandler(handle_join_request))
@@ -214,13 +200,8 @@ async def main():
     application.add_handler(CallbackQueryHandler(button_handler))
     application.add_handler(MessageHandler(filters.Chat(chat_id=ANNOUNCEMENT_CHANNEL_ID) & ~filters.COMMAND, broadcast_announcement))
 
-    # Start the web server first to satisfy Render port check
-    await start_web_server()
-
     print("𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 Bot is starting polling...")
-    
-    # Run polling cleanly
-    await application.run_polling(drop_pending_updates=True)
+    application.run_polling(drop_pending_updates=True)
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    main()
