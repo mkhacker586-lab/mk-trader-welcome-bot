@@ -2,7 +2,6 @@ import os
 import logging
 import asyncio
 import datetime
-from aiohttp import web
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, 
@@ -23,9 +22,8 @@ TELEGRAM_BOT_TOKEN = "8684962736:AAGyFQOjw2RLq7FvZbBJVSGMpTHu2GURHdE"
 BOT_NAME = "𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐁𝐎𝐓"
 LOG_CHANNEL_ID = -1003724080321  
 ANNOUNCEMENT_CHANNEL_ID = -1003931319011  
-CHANNEL_LINK = "https://t.me/+5xI1hmfvnzU3YTBk"
-PHOTO_URL = "https://i.postimg.cc/YSLc1PgP/file-00000000ec7881f794c7447fe7e6ddd3.png"
 USERS_FILE = "users.txt"
+PHOTO_URL = "https://i.postimg.cc/YSLc1PgP/file-00000000ec7881f794c7447fe7e6ddd3.png"
 
 def save_user(user_id):
     try:
@@ -194,19 +192,6 @@ async def broadcast_announcement(update: Update, context: ContextTypes.DEFAULT_T
     except Exception as e:
         print(f"Broadcast error: {e}")
 
-async def handle_web(request):
-    return web.Response(text="M.K Trader Bot is running!")
-
-async def start_web_server():
-    app = web.Application()
-    app.add_routes([web.get('/', handle_web)])
-    runner = web.AppRunner(app)
-    await runner.setup()
-    port = int(os.environ.get("PORT", 10000))
-    site = web.TCPSite(runner, '0.0.0.0', port)
-    await site.start()
-    print(f"Web server started on port {port}")
-
 async def main():
     application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
@@ -215,14 +200,13 @@ async def main():
     application.add_handler(CallbackQueryHandler(button_handler))
     application.add_handler(MessageHandler(filters.Chat(chat_id=ANNOUNCEMENT_CHANNEL_ID) & ~filters.COMMAND, broadcast_announcement))
 
-    await start_web_server()
-
-    print("𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 Interactive Bot is running successfully...")
+    print("𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 Bot is starting polling...")
     
     await application.initialize()
     await application.start()
     await application.updater.start_polling(drop_pending_updates=True)
     
+    # Keep application running smoothly
     while True:
         await asyncio.sleep(3600)
 
