@@ -25,8 +25,8 @@ logging.basicConfig(
 # ==========================================
 TELEGRAM_BOT_TOKEN = "8684962736:AAHQKkY174TL5DZCB1nBLwX2OHm8U0ck9M4"
 BOT_NAME = "𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐁𝐎𝐓"
-LOG_CHANNEL_ID = -1003724080321  # Log Channel ID
-ANNOUNCEMENT_CHANNEL_ID = -1003931319011  # Announcement Channel ID
+LOG_CHANNEL_ID = -1003724080321  
+ANNOUNCEMENT_CHANNEL_ID = -1003931319011  
 CHANNEL_LINK = "https://t.me/+5xI1hmfvnzU3YTBk"
 PHOTO_URL = "https://i.postimg.cc/YSLc1PgP/file-00000000ec7881f794c7447fe7e6ddd3.png"
 USERS_FILE = "users.txt"
@@ -101,7 +101,7 @@ async def send_welcome_post(chat_id, user, context):
             f"𝟏️⃣ **𝐒𝐞𝐬𝐬𝐢𝐨𝐧𝐬 𝐅𝐨𝐥𝐥𝐨𝐰 𝐊𝐚𝐫𝐧𝐚𝐲 𝐊𝐚 𝐓𝐚𝐫𝐞𝐞𝐪𝐚:**\n"
             f"🎯 𝐇𝐚𝐦𝐞𝐬𝐡𝐚 𝐡𝐚𝐦𝐚𝐫𝐞 𝐝𝐢𝐲𝐞 𝐠𝐚𝐲𝐞 𝐫𝐮𝐥𝐞𝐬, 𝐩𝐫𝐞𝐜𝐢𝐬𝐞 𝐬𝐢𝐠𝐧𝐚𝐥𝐬, 𝐚𝐮𝐫 𝐬𝐭𝐫𝐢𝐜𝐭 𝐫𝐢𝐬𝐤 𝐦𝐚𝐧𝐚𝐠𝐞𝐦𝐞𝐧𝐭 𝐤𝐞 𝐬𝐚𝐭𝐡 𝐭𝐫𝐚𝐝𝐢𝐧𝐠 𝐬𝐞𝐬𝐬𝐢𝐨𝐧𝐬 𝐣𝐨𝐢𝐧 𝐤𝐚𝐫𝐞𝐢𝐧 𝐭𝐚𝐚𝐤𝐞 𝐡𝐚𝐫 𝐭𝐫𝐚𝐝𝐞 𝐦𝐞𝐢𝐧 𝟏𝟎𝟎% 𝐩𝐫𝐨𝐟𝐢𝐭 𝐦𝐢𝐥 𝐬𝐚𝐤𝐞.\n\n"
             f"𝟐️⃣ **𝐅𝐞𝐞𝐝𝐛𝐚𝐜𝐤𝐬 𝐒𝐞𝐧𝐝 𝐊𝐚𝐫𝐧𝐚:**\n"
-            f"💬 𝐀𝐩𝐧𝐞 𝐩𝐫𝐨𝐟𝐢𝐭 𝐲𝐚 𝐥𝐨𝐬𝐬 𝐤𝐞 𝐬𝐜𝐫𝐞𝐞𝐧𝐬𝐡𝐨𝐭𝐬 𝐚𝐮𝐫 𝐚𝐩𝐧𝐚 𝐯𝐚𝐥𝐮𝐚𝐛𝐥𝐞 𝐟𝐞𝐞𝐝𝐛𝐚𝐜𝐤 𝐥𝐚𝐳𝐦𝐢 𝐬𝐡𝐚𝐫𝐞 𝐤𝐚𝐫𝐞𝐢𝐧 𝐭𝐚𝐚𝐤𝐞 𝐚𝐚𝐩𝐤𝐨 𝐦𝐚𝐳𝐞𝐞𝐝 𝐛𝐞𝐡𝐭𝐚𝐫 𝐠𝐮𝐢𝐝𝐚𝐧𝐜𝐞 𝐚𝐮𝐫 𝟐𝟒/𝟕 𝐬𝐮𝐩𝐩𝐨𝐫𝐭 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐤𝐢𝐲𝐚 𝐣𝐚 𝐬𝐚𝐤𝐞.\n\n"
+            f"💬 𝐀𝐩𝐧𝐞 𝐩𝐫𝐨𝐟𝐢𝐭 𝐲𝐚 𝐥𝐨𝐬𝐬 𝐤𝐞 𝐬𝐜𝐫𝐞𝐞𝐧𝐬𝐡𝐨𝐭𝐬 𝐚𝐮𝐫 𝐚𝐩𝐧𝐚 𝐯𝐚𝐥𝐮𝐚𝐛𝐥𝐞 𝐟𝐞𝐞𝐝𝐛𝐚𝐜𝐤 𝐥𝐚𝐳𝐦𝐢 𝐬𝐡𝐚𝐫𝐞 𝐤𝐚𝐫𝐞𝐢𝐧 𝐭𝐚𝐚𝐤𝐞 𝐚𝐚𝐩𝐤𝐨 𝐦𝐚𝐳𝐞𝐞𝐝 𝐛𝐞𝐡𝐭𝐚𝐫 𝐠𝐮𝐢𝑑𝐚𝐧𝐜𝐞 𝐚𝐮𝐫 𝟐𝟒/𝟕 𝐬𝐮𝐩𝐩𝐨𝐫𝐭 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐤𝐢𝐲𝐚 𝐣𝐚 𝐬𝐚𝐤𝐞.\n\n"
             f"𝟑️⃣ **𝐏𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐒𝐞𝐬𝐬𝐢𝐨𝐧𝐬 & 𝐋𝐨𝐬𝐬 𝐑𝐞𝐜𝐨𝐯𝐞𝐫𝐲:**\n"
             f"📈 𝐀𝐠𝐚𝐫 𝐚𝐚𝐩𝐤𝐞 𝐩𝐮𝐫𝐚𝐧𝐞 𝐥𝐨𝐬𝐬𝐞𝐬 𝐡𝐚𝐢𝐧, 𝐭𝐨𝐡 𝐡𝐚𝐦𝐚𝐫𝐞 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐫𝐞𝐜𝐨𝐯𝐞𝐫𝐲 𝐬𝐞𝐬𝐬𝐢𝐨𝐧𝐬 𝐚𝐮𝐫 𝐕𝐈𝐏 𝐩𝐥𝐚𝐧𝐬 𝐤𝐞 𝐳𝐚𝐫𝐢𝐲𝐞 𝐚𝐩𝐧𝐚 𝐩𝐨𝐫𝐭𝐟𝐨𝐥𝐢𝐨 𝐟𝐚𝐬𝐭 𝐫𝐞𝐜𝐨𝐯𝐞𝐫 𝐤𝐚𝐫 𝐬𝐚𝐤𝐭𝐞 𝐡𝐚𝐢𝐧! 💯🚀\n\n"
             f"𝟒️⃣ **𝐕𝐈𝐏 𝐉𝐨𝐢𝐧 𝐒𝐲𝐬𝐭𝐞𝐦 & 𝐄𝐱𝐜𝐥𝐮𝐬𝐢𝐯𝐞 𝐑𝐞𝐰𝐚𝐫𝐝𝐬:**\n"
@@ -144,7 +144,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     if data == "btn_recovery":
         text = (
-            f"📈 **𝐏𝐄𝐑𝐒𝐎𝐍𝐀𝐋 𝐋𝐎𝐒𝐒 𝐑𝐄𝐂𝐎𝐕𝐄𝐑𝐘 𝐙𝐎𝐍𝐄** 💯\n\n"
+            f"📈 **𝐏𝐄𝐑𝐒𝐎𝐍𝐀Ｌ 𝐋𝐎𝐒𝐒 𝐑𝐄𝐂𝐎𝐕𝐄𝐑𝐘 𝐙𝐎𝐍𝐄** 💯\n\n"
             f"Agar aapka purana loss ho chuka hai, toh pareshan hone ki koi zaroorat nahi hai! Humare VIP recovery sessions join karein.\n\n"
             f"🎯 **Recovery Steps:**\n"
             f"1️⃣ Naya account is link se banayein:\n🔗 https://broker-qx.pro/?lid=1614510\n"
@@ -225,6 +225,8 @@ async def main():
     await start_web_server()
 
     print("𝐌.𝐊 𝐓𝐑𝐀𝐃𝐄𝐑 Interactive Bot is running successfully...")
+    
+    # Safe polling method for Python 3.11 compatibility
     await application.initialize()
     await application.start()
     await application.updater.start_polling(drop_pending_updates=True)
